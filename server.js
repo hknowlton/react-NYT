@@ -39,6 +39,32 @@ db.once("open", function() {
 // -------------------------------------------------
 
 //routes
+// * `/api/saved` (get) - your components will use this to query MongoDB for all saved articles
+app.get("/api", function(req, res) {
+
+  Article.find({}).exec(function(err, doc) {
+
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.json(doc);
+    }
+  });
+});
+//  * `/api/saved` (post) - your components will use this to save an article to the database
+app.post("/api/saved", function(req, res) {
+
+});
+//  * `/api/saved` (delete) - your components will use this to delete a saved article in the database
+app.delete("/api/saved", function(req, res) {
+
+});
+// (get) - will load your single HTML page (with ReactJS) in public/index.html. 
+	//Make sure you put this after all other GET routes
+app.get("/", function(req, res) {
+  res.sendFile(__dirname + "/public/index.html");
+});
 
 // -------------------------------------------------
 
