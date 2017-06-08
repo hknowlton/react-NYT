@@ -62,9 +62,9 @@ app.delete("/api/saved", function(req, res) {
 });
 // (get) - will load your single HTML page (with ReactJS) in public/index.html. 
 	//Make sure you put this after all other GET routes
-app.get("/", function(req, res) {
-  res.sendFile(__dirname + "/public/index.html");
-});
+// app.get("/", function(req, res) {
+//   res.sendFile(__dirname + "/public/index.html");
+// });
 
 // -------------------------------------------------
 
