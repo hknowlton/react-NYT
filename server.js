@@ -21,7 +21,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
-app.use(express.static("./public"));
+//setting static folder
+app.use(express.static(__dirname + './public'));
 // -------------------------------------------------
 
 // MongoDB configuration (Change this URL to your own DB)
@@ -62,9 +63,9 @@ app.delete("/api/saved", function(req, res) {
 });
 // (get) - will load your single HTML page (with ReactJS) in public/index.html. 
 	//Make sure you put this after all other GET routes
-// app.get("/", function(req, res) {
-//   res.sendFile(__dirname + "/public/index.html");
-// });
+app.get("*", function(req, res) {
+	res.sendFile(__dirname + "/public/index.html");
+}
 
 // -------------------------------------------------
 

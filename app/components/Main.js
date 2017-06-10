@@ -1,5 +1,8 @@
 // Include React
 var React = require("react");
+var Saved = require("./children/Saved")
+var Search = require("./children/Search")
+
 var Main = React.createClass({
   // Here we render the function
   render: function() {
@@ -7,15 +10,12 @@ var Main = React.createClass({
       <div className="container">
         <div className="jumbotron">
           <h2><strong>NYT Article Scrubber</strong></h2>
-          <p><em>Search for and annotate articles of interest!</em></p>
           <hr />
-          <p>
-            Add fields here to search
-          </p>
+          <p><em>Search for and annotate articles of interest!</em></p>
         </div>
         <div className="row">
-          {/* This code will dump the correct Child Component */}
-          {this.props.children}
+          <Search />
+          <Saved /> 
         </div>
       </div>
     );
