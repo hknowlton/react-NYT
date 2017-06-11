@@ -7,7 +7,7 @@ var React = require("react");
 var ReactDOM = require("react-dom"); 
 
 // Require Address schema
-var Address = require("./models/Article");
+var Article = require("./models/Article");
 
 // Create a new express app
 var app = express();
@@ -25,7 +25,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(express.static(__dirname + './public'));
 // -------------------------------------------------
 
-// MongoDB configuration (Change this URL to your own DB)
+// MongoDB configuration for dev
 mongoose.connect("mongodb://localhost/nytreact");
 var db = mongoose.connection;
 
