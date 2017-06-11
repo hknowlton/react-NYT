@@ -67,7 +67,7 @@ app.delete("/api/saved", function(req, res) {
 	//Make sure you put this after all other GET routes
 app.get("*", function(req, res) {
 	res.sendFile(__dirname + "/public/index.html");
-}
+});
 
 // -------------------------------------------------
 
