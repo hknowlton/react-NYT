@@ -26,7 +26,9 @@ app.use(express.static(__dirname + './public'));
 // -------------------------------------------------
 
 // MongoDB configuration for dev
-mongoose.connect("mongodb://localhost/nytreact");
+//mongoose.connect("mongodb://localhost/nytreact");
+//MongoDB for heroku
+mongoose.connect("mongodb://heroku_601t64wg:33c0abc9sq4vmh4ncrflh8uqvg@ds121222.mlab.com:21222/heroku_601t64wg");
 var db = mongoose.connection;
 
 db.on("error", function(err) {
