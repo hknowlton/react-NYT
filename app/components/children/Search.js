@@ -2,9 +2,9 @@ var React = require("react");
 var queryNYT = require("../../helper")
 
 var Search = React.createClass({
-search: function(venet) {
+search: function() {
     //event, term, start, end
-   event.preventDefault();
+   
   console.log("search button clicked")
     //queryNYT.runQuery(term, start, end)
     //render articles in container
