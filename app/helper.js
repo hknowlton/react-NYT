@@ -21,7 +21,7 @@ var queryNYT = {
     })
     .then(function(results) {
       console.log("Axios Results", results.data.response);
-      return results.data.response;
+      return results.data.response.docs;
     });
   },
   // // This will return any saved articles from our database
