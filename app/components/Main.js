@@ -4,6 +4,7 @@ var Saved = require("./children/Saved")
 var Search = require("./children/Search")
 
 var Main = React.createClass({
+  //set state to pass to both children
   // Here we render the function
   render: function() {
     return (

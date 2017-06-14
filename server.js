@@ -5,6 +5,7 @@ var logger = require("morgan");
 var mongoose = require("mongoose");
 var React = require("react");
 var ReactDOM = require("react-dom"); 
+var path = require("path");
 
 // Require Address schema
 var Article = require("./models/Article");
@@ -22,7 +23,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 //setting static folder
-app.use(express.static(__dirname + './public'));
+app.use(express.static('./public'));
 // -------------------------------------------------
 
 // MongoDB configuration for dev
@@ -65,8 +66,8 @@ app.delete("/api/saved", function(req, res) {
 });
 // (get) - will load your single HTML page (with ReactJS) in public/index.html. 
 	//Make sure you put this after all other GET routes
-app.get("*", function(req, res) {
-	res.sendFile(__dirname + "/public/index.html");
+app.get("/", function(req, res) {
+	res.sendFile(path.join(__dirname + "/public/index.html"));
 });
 
 // -------------------------------------------------

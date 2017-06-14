@@ -2,8 +2,10 @@ var React = require("react");
 var queryNYT = require("../../helper")
 
 var Search = React.createClass({
-search: function() {
+search: function(event) {
+  event.preventDefault();
     //event, term, start, end
+    console.log(React.findDOMNode(this.refs['topic'].focus()));
    
   console.log("search button clicked")
     //queryNYT.runQuery(term, start, end)
@@ -21,13 +23,13 @@ render: function() {
             <div className="panel-body">
                 <form>
                     <div className="form-group">
-                      <label for="topic">Topic</label>
-                      <textarea className="form-control" id="topic" rows="1"></textarea>
-                      <label for="startyear">Start Year</label>
-                      <textarea className="form-control" id="topic" rows="1" type="number"></textarea>
-                      <label for="endyear">End Year</label>
-                      <textarea className="form-control" id="topic" rows="1" type="number"></textarea>
-                      <button type="submit" className="btn btn-primary" onSubmit={this.search()}>Submit</button>
+                      <label htmlFor="topic">Topic</label>
+                      <textarea className="form-control" id="topic" rows="1" ref="topic"></textarea>
+                      <label htmlFor="startyear">Start Year</label>
+                      <input className="form-control" id="topic" rows="1" type="number" ref="start"></input>
+                      <label htmlFor="endyear">End Year</label>
+                      <input className="form-control" id="topic" rows="1" type="number" ref="stop"></input>
+                      <button type="submit" className="btn btn-primary" onSubmit={this.search}>Submit</button>
                     </div>
                 </form>
             </div>
