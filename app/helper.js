@@ -1,32 +1,29 @@
 // Include the Axios library for HTTP requests
 var axios = require("axios");
 
-// NYT API Key (Replace with your own API Key)
-var APIKey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
+var APIkey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 
 // Helper Functions
 var queryNYT = {
-  // This will run our query.
-  // runQuery: function(term, start, end) {
+  //This will run our query via the NYT API.
+  runQuery: function(term, start, stop) {
+    var formattedTerm = term.trim();
+    var formattedStart = start.trim() + "0101";
+    var formattedStop = stop.trim() + "1231";
 
-  //   // Adjust to get search terms in proper format
-  //   var formattedTerm = term.trim();
-  //   var formattedStart = start.trim() + "0101";
-  //   var formattedEnd = end.trim() + "1231";
-
-  //   return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
-  //     params: {
-  //       "api-key": APIKey,
-  //       "q": formattedTerm,
-  //       "begin_date": formattedStart,
-  //       "end_date": formattedEnd
-  //     }
-  //   })
-  //   .then(function(results) {
-  //     console.log("Axios Results", results.data.response);
-  //     return results.data.response;
-  //   });
-  // },
+    return axios.get("https://api.nytimes.com/svc/search/v2/articlesearch.json", {
+      params: {
+        "api-key": APIkey,
+        "q": formattedTerm,
+        "begin_date": formattedStart,
+        "end_date": formattedStop
+      }
+    })
+    .then(function(results) {
+      console.log("Axios Results", results.data.response);
+      return results.data.response;
+    });
+  },
   // // This will return any saved articles from our database
   // getSaved: function() {
   //   return axios.get("/api/saved")
