@@ -30,8 +30,10 @@ class Search extends React.Component{
 
   }
 
-  save(pub_date){
-    console.log("save button clicked" + pub_date)
+  save(data){
+    event.preventDefault();
+    console.log("save button clicked " + data.title)
+    //queryNYT.postSaved(){}.bind(this));
     //testing...pub date goes through but not on click..
     //or should I put the button in a form <form action="" method="POST">
   }
@@ -69,9 +71,18 @@ class Search extends React.Component{
                             <a href={web_url} target="_blank"><h3>{headline.main}</h3></a>
                             <h5>Date published:{pub_date}</h5>
                             <p>{lead_paragraph}</p>
-                          <button className="btn btn-primary" onClick={this.save(
-                            pub_date
-                            )}>Save</button>
+                          <button type="submit" className="btn btn-primary" onClick={ 
+                            () => {
+                            var data = {
+                            title: headline.main,
+                            date: pub_date,
+                            url: web_url
+                            }
+                            this.save(
+                              data
+                            )
+                            }
+                          }>Save</button>
                         </div>                              
                       </div>
                     ))}
