@@ -17,17 +17,12 @@ class Main extends React.Component{
   }
 
   setParent(data){
-      //binding our axios esults to the parent state of datea (store in array)
+      //binding our axios results to the parent state of data (store in array)
       this.setState({data: data});
-      console.log(this.state.data);
+  }
 
-      // var result = this.state.data;
-      //
-      // console.log(result);
-
-      // result.map(function (el, index) {
-      //     console.log(el);
-      // });
+  setSaved(data){
+    this.setState({results: results});
   }
 
   render(){

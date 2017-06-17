@@ -5,7 +5,7 @@ var APIkey = "b9f91d369ff59547cd47b931d8cbc56b:0:74623931";
 
 // Helper Functions
 var queryNYT = {
-  //This will run our query via the NYT API.
+  //Run our query via the NYT API.
   runQuery: function(term, start, stop) {
     var formattedTerm = term.trim();
     var formattedStart = start.trim() + "0101";
@@ -20,27 +20,35 @@ var queryNYT = {
       }
     })
     .then(function(results) {
-      console.log("Axios Results", results.data.response);
+      console.log("Axios Results from NYT", results.data.response);
       return results.data.response.docs;
     });
   },
-  // // This will return any saved articles from our database
-  // getSaved: function() {
-  //   return axios.get("/api/saved")
-  //     .then(function(results) {
-  //       console.log("axios results", results);
-  //       return results;
-  //     });
-  // },
-  // // This will save new articles to our database
-  // postSaved: function(title, date, url) {
-  //   var newArticle = { title: title, date: date, url: url };
-  //   return axios.post("/api/saved", newArticle)
-  //     .then(function(response) {
-  //       console.log("axios results", response.data._id);
-  //       return response.data._id;
-  //     });
-  // },
+    //Save new articles to the database
+  postSaved: function(data) {
+    axios.post('/api/saved', {
+        title: data.title,
+        date: data.date,
+        url: data.url
+      })
+      .then(function (response) {
+        console.log("post response" + response);
+      })
+      .catch(function (error) {
+        console.log("error posting" + error);
+      });
+  },
+  // This will return any saved articles from our database
+  getSaved: function() {
+    axios.get('/api/saved')
+      .then(function (response) {
+       return response;
+      })
+      .catch(function (error) {
+        console.log("get error" + error);
+      });
+  },
+
   // // This will remove saved articles from our database
   // deleteSaved: function(title, data, url) {
   //   return axios.delete("/api/saved", {
@@ -57,5 +65,4 @@ var queryNYT = {
   // }
 };
 
-//Export queryNYT function
 module.exports = queryNYT;

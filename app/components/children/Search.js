@@ -17,25 +17,15 @@ class Search extends React.Component{
         data[input] = this.refs[input].value;
         this.refs[input].value = '';
     }
-    // //--------------------------
-    // //event, term, start, end
-    // //console.log(React.findDOMNode(this.refs['topic'].focus()));
-    // //----------------------
-    console.log(data);
     //Connect to the API- run query
     queryNYT.runQuery(data.topic, data.start, data.stop).then(function (data) {
         this.props.setParent(data);
     }.bind(this));
-    //render articles in container
-
   }
 
   save(data){
     event.preventDefault();
-    console.log("save button clicked " + data.title)
-    //queryNYT.postSaved(){}.bind(this));
-    //testing...pub date goes through but not on click..
-    //or should I put the button in a form <form action="" method="POST">
+    queryNYT.postSaved(data);
   }
 
   render(){
@@ -73,14 +63,12 @@ class Search extends React.Component{
                             <p>{lead_paragraph}</p>
                           <button type="submit" className="btn btn-primary" onClick={ 
                             () => {
-                            var data = {
-                            title: headline.main,
-                            date: pub_date,
-                            url: web_url
-                            }
-                            this.save(
-                              data
-                            )
+                              var data = {
+                              title: headline.main,
+                              date: pub_date,
+                              url: web_url
+                              }
+                              this.save(data)
                             }
                           }>Save</button>
                         </div>                              
