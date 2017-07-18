@@ -11,7 +11,8 @@ class Main extends React.Component{
           topic:'',
           startYear: 0,
           endYear:'',
-          data: []
+          data: [],
+          saved: false
       };
       this.setParent = this.setParent.bind(this);
   }
@@ -35,12 +36,12 @@ class Main extends React.Component{
           </div>
           <div className="row">
             <Search setParent={this.setParent} results={this.state.data}/>
-            <Saved /> 
+            <Saved savedArticles={this.state.data}/> 
           </div>
         </div>
       );
   }
 }
 
-// Export the componen back for use in other files
+// Export the component back for use in other files
 module.exports = Main;
